@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TibMarketplace</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <script src="https://cdn.jsdelivr.net/npm/trix"></script>
+    <!-- Trix CDN for CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/trix/dist/trix.css">
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body class="flex flex-col min-h-screen">
+    <% if user_signed_in? %>
+      <%= render "shared/nav_bar"%>
+    <% end %>
+
+    <% if notice %>
+      <div class="flex justify-between py-4 px-8 bg-[#98f5e1]  text-[#236c5b]">
+        <%= notice %>
+      </div>
+    <% end %>
+    <% if alert %>
+      <div class="flex justify-between py-4 px-8 bg-[#fad2e1]  text-[#7c193d]">
+        <%= alert %>
+      </div>
+    <% end %>
+    <main>
+      <%= yield %>
+    </main>
+    <% if user_signed_in? %>
+      <%= render "shared/footer"%>
+    <% end %>
+  </body>
+</html>
