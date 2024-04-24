@@ -50,7 +50,22 @@
 
   <div class="mobile-menu hidden md:hidden" data-mobile-menu-target="menu">
     <%= link_to blog_posts_path do %>
-      <span  class="block py-2 px-4 text-sm hover:bg-gray-200"> Blog<span>
+      <span class="block py-2 px-4 text-sm hover:bg-gray-200"> Blog<span>
+    <% end %>
+    <% if user_signed_in? %>
+      <%= link_to edit_user_registration_path do %>
+        <span class="block py-2 px-4 text-sm hover:bg-gray-200">Profile</span>
+      <% end %>
+      <%= button_to destroy_user_session_path, method: :delete do %>
+        <span class="block py-2 px-4 text-sm hover:bg-gray-200">Log out</span>
+      <% end %>
+    <% else %>
+      <%= link_to user_session_path do %>
+        <span class="block py-2 px-4 text-sm hover:bg-gray-200">Login</span>
+      <% end %>
+    <% end %>
+    <%= link_to new_user_registration_path do %>
+      <span class="block py-2 px-4 font-bold hover:bg-gray-200">Signup</span>
     <% end %>
   </div>
 </nav>
