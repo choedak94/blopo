@@ -4,23 +4,22 @@
 
 <%= simple_form_for @blog_post do |f| %>
   <div class="relative">
-    <div class="overflow-hidden rounded-lg border border-gray-300 shadow-sm focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500">
+    <div class="overflow-hidden rounded-lg border-none shadow-sm focus-within:border-indigo-500 focus-within:ring-1 focus-within:ring-indigo-500">
       <%= f.text_field :title, label: false, input_html: { id: "title", class: "block w-full border-0 pt-2.5 text-lg font-medium placeholder:text-gray-400 focus:ring-0" }, placeholder: "Title" %>
-      <%= f.text_field :body,
+      <%= f.rich_text_area :content,
             as: :text,
             label: false,
             input_html: {
               id: "description",
-              class: "block w-full resize-none border-0 py-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6",
+              class: "block w-full resize-none py-0 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6",
               rows: 10,
               cols: 50
             }%>
 
-      <trix-editor input="blog_post_body" class="border-none"></trix-editor>
       <!-- Spacer element to match the height of the toolbar -->
       <div aria-hidden="true">
         <div class="py-2">
-          <div class="h-80"></div>
+          <div class="h-5"></div>
         </div>
       </div>
     </div>
