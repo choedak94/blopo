@@ -15,9 +15,7 @@
   </head>
 
   <body class="flex flex-col min-h-screen">
-    <% if user_signed_in? %>
-      <%= render "shared/nav_bar"%>
-    <% end %>
+    <%= render "shared/nav_bar"%>
 
     <% if notice %>
       <div class="flex justify-between py-4 px-8 bg-[#98f5e1]  text-[#236c5b]">
@@ -32,8 +30,7 @@
     <main>
       <%= yield %>
     </main>
-    <% if user_signed_in? %>
-      <%= render "shared/footer"%>
-    <% end %>
+
+    <%= render "shared/footer"%>
   </body>
 </html>

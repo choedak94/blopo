@@ -1,9 +1,9 @@
 class BlogPostsController < ApplicationController
-	before_action :authenticate_user!
+	before_action :authenticate_user!, only: [:edit, :update, :destroy]
   before_action :load_blog_post, only: [:edit, :update, :show, :destroy]
 
 	def index
-		@blog_posts = BlogPost.all
+		@blog_posts = user_signed_in? ? BlogPost.all : @blog_post = BlogPost.published
 	end
 
 	def show
@@ -43,11 +43,13 @@ class BlogPostsController < ApplicationController
 	def resource_params
 		params
 		.require(:blog_post)
-		.permit(:title, :body)
+		.permit(:title, :body, :published_at)
 	end
 
 	def load_blog_post
-    @blog_post = BlogPost.find(params[:id])
+		@blog_post = user_signed_in? ? BlogPost.find(params[:id]) : @blog_post = BlogPost.published.find(params[:id])
+	rescue ActiveRecord::RecordNotFound
+		redirect_to root_path
 	end
 
 	def authenticate_user!
