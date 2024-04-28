@@ -13,7 +13,10 @@
 						<span class="sr-only"><%= blog.title %></span>
 					<% end %>
 				</div>
-				<p class="pointer-events-none mt-2 block truncate text-sm font-semibold text-gray-900"><%= blog.title.capitalize %></p>
+				<div class="flex space-x-5">
+			  	<p class="pointer-events-none mt-2 block truncate text-sm font-semibold text-gray-900"><%= blog.title.capitalize %></p>
+				  <p class="pointer-events-none mt-2 block truncate text-sm text-gray-900 flex justify-end"><%= blog.user.username %></p>
+				</div>
 				<p class="pointer-events-none block text-sm font-medium text-gray-500"><%= blog.published_at %></p>
 			</div>
 		<% end %>
