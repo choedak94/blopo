@@ -9,6 +9,7 @@ Welcome to my simple Rails blog app! This is a basic application where users can
 - **View Posts**: Users can view all published blog posts.
 - **Edit and Delete Posts**: Authors can edit and delete their own posts.
 - **Comments**: Users can leave comments on blog posts.
+- **User Profiles**: Each user has a profile page showing their details and blog posts.
 
 ## Usage
 
@@ -18,3 +19,4 @@ Welcome to my simple Rails blog app! This is a basic application where users can
 4. Fill in the title and content of your post and click "Create Post".
 5. Your new post will now be visible on the homepage.
 6. You can click on a post to view its details, edit, or delete it.
+7. Visit your profile from the navigation bar to see your information and posts.
