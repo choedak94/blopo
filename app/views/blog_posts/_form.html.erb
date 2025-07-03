@@ -1,0 +1,7 @@
+<%= simple_form_for blog_post, html: { multipart: true, class: "space-y-6" } do |f| %>
+  <%= f.input :title, label: false, input_html: { placeholder: "Title", class: "block w-full text-xl border-b border-gray-300 focus:border-red-500" } %>
+  <%= f.rich_text_area :content, as: :text, label: false, input_html: { class: "block w-full min-h-[200px]" } %>
+  <%= f.input :video, as: :file, label: "Upload video", input_html: { accept: "video/*" } %>
+  <%= f.datetime_select :published_at, include_blank: true, label: "Publish at" %>
+  <%= f.button :submit, class: "bg-red-600 text-white font-semibold px-4 py-2 rounded-md" %>
+<% end %>
