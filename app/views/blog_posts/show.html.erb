@@ -11,18 +11,21 @@
 <% end %>
 
 <div class="bg-gray-900 py-8">
-  <div class="max-w-5xl mx-auto px-4">
+  <div class="max-w-4xl mx-auto px-4">
     <% if @blog_post.video.attached? %>
-      <div class="aspect-video mb-4">
+      <div class="aspect-video mb-4 rounded-lg overflow-hidden">
         <%= video_tag @blog_post.video, controls: true, class: "w-full h-full" %>
       </div>
     <% end %>
-    <h1 class="text-white text-2xl font-bold mb-2"><%= @blog_post.title %></h1>
-    <div class="prose prose-invert">
-      <%= @blog_post.content %>
+    <h1 class="text-white text-xl font-bold mb-2"><%= @blog_post.title %></h1>
+    <div class="mt-1 text-sm text-gray-400">
+      Posted by <%= @blog_post.user.username %>
+      <% if @blog_post.published_at.present? %>
+        · <%= @blog_post.published_at.to_date %>
+      <% end %>
     </div>
-    <div class="mt-4 text-sm text-gray-400">
-      Author: <%= @blog_post.user.username %>
+    <div class="prose prose-invert mt-4">
+      <%= @blog_post.content %>
     </div>
   </div>
 </div>
