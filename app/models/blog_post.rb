@@ -1,6 +1,7 @@
 class BlogPost < ApplicationRecord
-	belongs_to :user
+        belongs_to :user
   has_rich_text :content
+  has_one_attached :video
 
 	validates :title, presence: true
 	validates :content, presence: true

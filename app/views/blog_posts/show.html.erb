@@ -10,6 +10,12 @@
   </div>
 <% end %>
 
+<% if @blog_post.video.attached? %>
+  <div class="bg-black flex justify-center py-6">
+    <%= video_tag @blog_post.video, controls: true, class: "w-full max-w-4xl rounded-lg shadow-lg" %>
+  </div>
+<% end %>
+
 <div class="bg-white py-12 sm:py-16">
   <div class="mx-auto max-w-7xl px-6 lg:px-8">
     <div class="mx-auto max-w-2xl lg:mx-0">
@@ -20,4 +26,4 @@
 </div>
 <div class="flex justify-end m-5">
  Author: <%= @blog_post.user.username %>
-<div>
+</div>

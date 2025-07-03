@@ -49,7 +49,7 @@ class BlogPostsController < ApplicationController
   private
 
   def resource_params
-    params.require(:blog_post).permit(:title, :content, :published_at)
+    params.require(:blog_post).permit(:title, :content, :published_at, :video)
   end
 
   def load_blog_post
