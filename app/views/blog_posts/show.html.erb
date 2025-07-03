@@ -12,7 +12,7 @@
   <% end %>
 
   <% if @blog_post.video.attached? %>
-    <div class="aspect-video bg-black">
+    <div class="aspect-video bg-black max-w-3xl mx-auto">
       <%= video_tag @blog_post.video, controls: true, class: "w-full h-full" %>
     </div>
   <% end %>
