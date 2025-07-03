@@ -19,10 +19,20 @@
     <% end %>
     <h1 class="text-white text-2xl font-bold mb-2"><%= @blog_post.title %></h1>
     <div class="prose prose-invert">
-      <%= @blog_post.content %>
+      <%= simple_format(@blog_post.description) %>
     </div>
     <div class="mt-4 text-sm text-gray-400">
       Author: <%= @blog_post.user.username %>
     </div>
+  </div>
+</div>
+
+<div class="max-w-5xl mx-auto px-4 py-4">
+  <h2 class="text-xl font-semibold">Comments</h2>
+  <%= render 'comments/form', blog_post: @blog_post, parent: nil %>
+  <div class="mt-4">
+    <% @blog_post.comments.where(parent_id: nil).each do |comment| %>
+      <%= render 'comments/comment', comment: comment %>
+    <% end %>
   </div>
 </div>

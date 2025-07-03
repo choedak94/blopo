@@ -1,0 +1,12 @@
+<div class="mt-4">
+  <p class="font-semibold"><%= comment.user.username %></p>
+  <p><%= simple_format(comment.body) %></p>
+  <div class="ml-4">
+    <%= render 'comments/form', blog_post: comment.blog_post, parent: comment %>
+    <% comment.replies.each do |reply| %>
+      <div class="ml-4">
+        <%= render 'comments/comment', comment: reply %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,10 +1,10 @@
 class BlogPost < ApplicationRecord
-        belongs_to :user
-  has_rich_text :content
+  belongs_to :user
+  has_many :comments, dependent: :destroy
   has_one_attached :video
 
-	validates :title, presence: true
-	validates :content, presence: true
+  validates :title, presence: true
+  validates :description, presence: true
 
 	scope :draft, -> {where(published_at: nil)}
 	scope :published, -> { where("published_at <= ?", Time.current ) }
