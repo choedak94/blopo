@@ -1,7 +1,33 @@
-<%= simple_form_for blog_post, html: { multipart: true, class: "space-y-6" } do |f| %>
-  <%= f.input :title, label: false, input_html: { placeholder: "Title", class: "block w-full text-xl border-b border-gray-300 focus:border-red-500" } %>
-  <%= f.rich_text_area :content, as: :text, label: false, input_html: { class: "block w-full min-h-[200px]" } %>
-  <%= f.input :video, as: :file, label: "Upload video", input_html: { accept: "video/*" } %>
-  <%= f.datetime_select :published_at, include_blank: true, label: "Publish at" %>
-  <%= f.button :submit, class: "bg-red-600 text-white font-semibold px-4 py-2 rounded-md" %>
-<% end %>
+<div class="max-w-xl mx-auto mt-10 bg-white rounded-2xl shadow-lg p-8 space-y-6">
+  <h1 class="text-2xl font-bold text-gray-800 text-center">
+    <%= blog_post.new_record? ? "Upload Your Video" : "Edit Video" %>
+  </h1>
+
+  <%= form_with model: blog_post, local: true, html: { multipart: true } do |f| %>
+    <div class="space-y-4">
+      <div>
+        <%= f.label :title, "Title", class: "block mb-1 font-medium text-gray-700" %>
+        <%= f.text_field :title, placeholder: "Enter video title...", class: "w-full border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-3" %>
+      </div>
+
+      <div>
+        <%= f.label :description, "Description", class: "block mb-1 font-medium text-gray-700" %>
+        <%= f.text_area :description, placeholder: "Write a brief description...", rows: 4, class: "w-full border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-3" %>
+      </div>
+
+      <div>
+        <%= f.label :video, "Choose Video", class: "block mb-1 font-medium text-gray-700" %>
+        <%= f.file_field :video, accept: "video/*", class: "w-full border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-3 bg-white file:bg-blue-500 file:text-white file:rounded file:border-0 file:px-4 file:py-2 hover:file:bg-blue-600" %>
+      </div>
+
+      <div>
+        <%= f.label :published_at, "Publish At", class: "block mb-1 font-medium text-gray-700" %>
+        <%= f.datetime_select :published_at, include_blank: true %>
+      </div>
+
+      <div class="pt-4 text-center">
+        <%= f.submit blog_post.new_record? ? "Upload Video" : "Update Video", class: "bg-blue-600 hover:bg-blue-700 text-black font-semibold py-3 px-6 rounded-xl shadow transition duration-300" %>
+      </div>
+    </div>
+  <% end %>
+</div>

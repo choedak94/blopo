@@ -54,11 +54,24 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_28_120513) do
 
   create_table "blog_posts", force: :cascade do |t|
     t.string "title"
+    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "published_at"
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_blog_posts_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "body"
+    t.bigint "user_id", null: false
+    t.bigint "blog_post_id", null: false
+    t.bigint "parent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blog_post_id"], name: "index_comments_on_blog_post_id"
+    t.index ["parent_id"], name: "index_comments_on_parent_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,4 +91,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_28_120513) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "blog_posts", "users"
+  add_foreign_key "comments", "blog_posts"
+  add_foreign_key "comments", "users"
 end

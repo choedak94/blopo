@@ -7,5 +7,6 @@ Rails.application.routes.draw do
       get :index
     end
   end
+  resources :comments, only: [:create]
   root "blog_posts#dashboard"
 end
