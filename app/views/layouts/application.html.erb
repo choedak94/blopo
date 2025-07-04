@@ -12,7 +12,7 @@
   </head>
 
   <body class="flex flex-col min-h-screen">
-    <%= render "shared/nav_bar"%>
+    <%= render "shared/nav_bar" %>
 
     <% if notice %>
       <div class="flex justify-between py-4 px-8 bg-[#98f5e1]  text-[#236c5b]">
@@ -24,7 +24,7 @@
         <%= alert %>
       </div>
     <% end %>
-    <main>
+    <main class="flex-1 md:ml-56 mb-16 md:mb-0">
       <%= yield %>
     </main>
 

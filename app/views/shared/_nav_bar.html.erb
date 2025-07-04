@@ -1,63 +1,71 @@
-<nav class="bg-white border-b shadow-sm" data-controller="mobile-menu">
-  <div class="mx-auto max-w-7xl px-4 py-2 flex items-center justify-between">
-    <div class="flex items-center space-x-2">
-      <%= link_to dashboard_blog_posts_path, class: "flex items-center" do %>
-        <svg class="h-6 w-6 text-red-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M10 16.5l6-4.5-6-4.5v9z" />
+<nav class="fixed bottom-0 inset-x-0 md:top-0 md:left-0 md:bottom-0 md:w-56 bg-white border-t md:border-r shadow-md z-50">
+  <div class="hidden md:flex items-center px-4 py-4">
+    <%= link_to dashboard_blog_posts_path, class: "flex items-center" do %>
+      <svg class="h-6 w-6 text-red-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M10 16.5l6-4.5-6-4.5v9z" />
+      </svg>
+      <span class="ml-2 text-xl font-semibold">BloPo</span>
+    <% end %>
+  </div>
+
+  <div class="hidden md:block px-4 pb-4">
+    <%= form_with url: dashboard_blog_posts_path, method: :get, local: true, class: "flex" do |f| %>
+      <%= f.text_field :q, value: params[:q], placeholder: "Search", class: "flex-1 border rounded-l-full px-4 py-1" %>
+      <%= f.submit "Search", class: "px-4 py-1 bg-blue-500 text-white rounded-r-full" %>
+    <% end %>
+  </div>
+
+  <ul class="flex justify-around md:flex-col md:space-y-1 md:px-2 md:pb-4">
+    <li>
+      <%= link_to dashboard_blog_posts_path, class: "flex flex-col md:flex-row items-center py-2 md:px-3 hover:bg-gray-100 rounded-lg" do %>
+        <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M3 12l18-12v24L3 12z" />
         </svg>
-        <span class="ml-1 text-xl font-semibold">BloPo</span>
+        <span class="text-xs md:text-base mt-1 md:mt-0 md:ml-3">Home</span>
       <% end %>
-    </div>
-    <div class="hidden md:flex flex-1 mx-8">
-      <%= form_with url: dashboard_blog_posts_path, method: :get, local: true, class: "flex w-full" do |f| %>
-        <%= f.text_field :q, value: params[:q], placeholder: "Search", class: "flex-1 border rounded-l-full px-4 py-1" %>
-        <%= f.submit "Search", class: "px-4 py-1 bg-blue-500 text-white rounded-r-full" %>
-      <% end %>
-    </div>
-    <div class="hidden md:flex items-center space-x-4">
-      <% if user_signed_in? %>
-        <%= link_to new_blog_post_path, class: "text-gray-700 hover:text-gray-900" do %>
+    </li>
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to new_blog_post_path, class: "flex flex-col md:flex-row items-center py-2 md:px-3 hover:bg-gray-100 rounded-lg" do %>
           <svg class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
           </svg>
+          <span class="text-xs md:text-base mt-1 md:mt-0 md:ml-3">Upload</span>
         <% end %>
-        <%= link_to user_path(current_user), class: "text-gray-700 hover:text-gray-900" do %>
-          Profile
+      </li>
+      <li>
+        <%= link_to user_path(current_user), class: "flex flex-col md:flex-row items-center py-2 md:px-3 hover:bg-gray-100 rounded-lg" do %>
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+          </svg>
+          <span class="text-xs md:text-base mt-1 md:mt-0 md:ml-3">Profile</span>
         <% end %>
-        <%= button_to destroy_user_session_path, method: :delete, class: "text-gray-700 hover:text-gray-900" do %>
-          Log out
+      </li>
+      <li>
+        <%= button_to destroy_user_session_path, method: :delete, class: "flex flex-col md:flex-row items-center py-2 md:px-3 w-full text-left hover:bg-gray-100 rounded-lg" do %>
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M16 13v-2H7V8l-5 4 5 4v-3zM20 3H10v2h10v14H10v2h10a2 2 0 002-2V5a2 2 0 00-2-2z" />
+          </svg>
+          <span class="text-xs md:text-base mt-1 md:mt-0 md:ml-3">Log out</span>
         <% end %>
-      <% else %>
-        <%= link_to user_session_path, class: "text-gray-700 hover:text-gray-900" do %>
-          Login
+      </li>
+    <% else %>
+      <li>
+        <%= link_to user_session_path, class: "flex flex-col md:flex-row items-center py-2 md:px-3 hover:bg-gray-100 rounded-lg" do %>
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M10 12a5 5 0 100-10 5 5 0 000 10zM14 14H6a6 6 0 00-6 6v2h20v-2a6 6 0 00-6-6z" />
+          </svg>
+          <span class="text-xs md:text-base mt-1 md:mt-0 md:ml-3">Login</span>
         <% end %>
-        <%= link_to new_user_registration_path, class: "text-gray-700 hover:text-gray-900" do %>
-          Signup
+      </li>
+      <li>
+        <%= link_to new_user_registration_path, class: "flex flex-col md:flex-row items-center py-2 md:px-3 hover:bg-gray-100 rounded-lg" do %>
+          <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+          </svg>
+          <span class="text-xs md:text-base mt-1 md:mt-0 md:ml-3">Signup</span>
         <% end %>
-      <% end %>
-    </div>
-    <div class="md:hidden flex items-center">
-      <button class="mobile-menu-button" data-action="click->mobile-menu#toggleMenu">
-        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-      </button>
-    </div>
-  </div>
-  <div class="mobile-menu hidden md:hidden" data-mobile-menu-target="menu">
-    <div class="px-4 pb-4 space-y-2">
-      <%= form_with url: dashboard_blog_posts_path, method: :get, local: true, class: "flex space-x-2" do |f| %>
-        <%= f.text_field :q, value: params[:q], placeholder: "Search", class: "flex-1 border rounded-l-full px-4 py-1" %>
-        <%= f.submit "Search", class: "px-4 py-1 bg-blue-500 text-white rounded-r-full" %>
-      <% end %>
-      <% if user_signed_in? %>
-        <%= link_to new_blog_post_path, class: "block py-2" do %>Upload<% end %>
-        <%= link_to user_path(current_user), class: "block py-2" do %>Profile<% end %>
-        <%= button_to destroy_user_session_path, method: :delete, class: "block py-2 text-left" do %>Log out<% end %>
-      <% else %>
-        <%= link_to user_session_path, class: "block py-2" do %>Login<% end %>
-        <%= link_to new_user_registration_path, class: "block py-2" do %>Signup<% end %>
-      <% end %>
-    </div>
-  </div>
+      </li>
+    <% end %>
+  </ul>
 </nav>
