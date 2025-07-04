@@ -1,17 +1,15 @@
-<div class="mt-4" data-controller="reply-form">
-  <p class="font-semibold"><%= comment.user.username %></p>
-  <p><%= simple_format(comment.body) %></p>
+<div class="space-y-1" data-controller="reply-form">
+  <p class="font-semibold text-gray-800"><%= comment.user.username %></p>
+  <p class="text-gray-600"><%= simple_format(comment.body) %></p>
   <% if user_signed_in? %>
     <button data-action="reply-form#toggle" class="text-sm text-blue-600 mt-1">Reply</button>
     <div data-reply-form-target="form" class="hidden ml-4">
       <%= render 'comments/form', blog_post: comment.blog_post, parent: comment %>
     </div>
   <% end %>
-  <div class="ml-4">
+  <div class="ml-4 space-y-4">
     <% comment.replies.each do |reply| %>
-      <div class="ml-4">
-        <%= render 'comments/comment', comment: reply %>
-      </div>
+      <%= render 'comments/comment', comment: reply %>
     <% end %>
   </div>
 </div>
