@@ -1,4 +1,4 @@
-<div class="max-w-xl mx-auto mt-10 bg-white rounded-2xl shadow-lg p-8 space-y-6">
+<div class="max-w-xl mx-auto mt-6 bg-white rounded-lg shadow p-8 space-y-6">
   <h1 class="text-2xl font-bold text-gray-800 text-center">
     <%= blog_post.new_record? ? "Upload Your Video" : "Edit Video" %>
   </h1>
@@ -26,7 +26,7 @@
       </div>
 
       <div class="pt-4 text-center">
-        <%= f.submit blog_post.new_record? ? "Upload Video" : "Update Video", class: "bg-blue-600 hover:bg-blue-700 text-black font-semibold py-3 px-6 rounded-xl shadow transition duration-300" %>
+        <%= f.submit blog_post.new_record? ? "Upload Video" : "Update Video", class: "bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-xl shadow transition duration-300" %>
       </div>
     </div>
   <% end %>

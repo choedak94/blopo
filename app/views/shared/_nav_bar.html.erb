@@ -1,66 +1,63 @@
- <nav class="bg-gray-100" data-controller="mobile-menu">
-  <div class="max-w-6xl mx-auto px-4">
-    <div class="flex justify-between">
-
-      <div class="flex space-x-4">
-        <div>
-         <%= link_to dashboard_blog_posts_path, class: "flex items-center py-5 px-2 text-gray-700 hover:text-gray-900" do %>
-            <%= image_tag("logo.png", alt: 'blopo logo', class: "h-6 w-6 mr-1") %>
-            <span class="font-bold">BloPo</span>
-          <% end %>
-        </div>
-      </div>
-
-      <div class="hidden md:flex items-center space-x-1">
-        <% if user_signed_in? %>
-          <%= link_to user_path(current_user) do %>
-            <span class="py-5 px-4">Profile</span>
-          <% end %>
-          <%= link_to blog_posts_path do %>
-            <span class="py-5 px-4">My Blog</span>
-          <% end %>
-          <%= button_to destroy_user_session_path, method: :delete do %>
-            <span class="py-5 px-4">Log out</span>
-          <% end %>
-        <% else %>
-          <%= link_to user_session_path do %>
-            <span class="py-5 px-4">Login</span>
-          <% end %>
-          <%= link_to new_user_registration_path do %>
-            <span class="py-2 px-3 bg-yellow-400 hover:bg-yellow-300 text-yellow-900 hover:text-yellow-800 rounded transition duration-300">Signup</span>
-          <% end %>
-        <% end %>
-      </div>
-
-      <div class="md:hidden flex items-center">
-        <button class="mobile-menu-button"  data-action="click->mobile-menu#toggleMenu">
-          <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+<nav class="bg-white border-b shadow-sm" data-controller="mobile-menu">
+  <div class="mx-auto max-w-7xl px-4 py-2 flex items-center justify-between">
+    <div class="flex items-center space-x-2">
+      <%= link_to dashboard_blog_posts_path, class: "flex items-center" do %>
+        <svg class="h-6 w-6 text-red-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M10 16.5l6-4.5-6-4.5v9z" />
+        </svg>
+        <span class="ml-1 text-xl font-semibold">BloPo</span>
+      <% end %>
+    </div>
+    <div class="hidden md:flex flex-1 mx-8">
+      <%= form_with url: dashboard_blog_posts_path, method: :get, local: true, class: "flex w-full" do |f| %>
+        <%= f.text_field :q, value: params[:q], placeholder: "Search", class: "flex-1 border rounded-l-full px-4 py-1" %>
+        <%= f.submit "Search", class: "px-4 py-1 bg-blue-500 text-white rounded-r-full" %>
+      <% end %>
+    </div>
+    <div class="hidden md:flex items-center space-x-4">
+      <% if user_signed_in? %>
+        <%= link_to new_blog_post_path, class: "text-gray-700 hover:text-gray-900" do %>
+          <svg class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
           </svg>
-        </button>
-      </div>
-
+        <% end %>
+        <%= link_to user_path(current_user), class: "text-gray-700 hover:text-gray-900" do %>
+          Profile
+        <% end %>
+        <%= button_to destroy_user_session_path, method: :delete, class: "text-gray-700 hover:text-gray-900" do %>
+          Log out
+        <% end %>
+      <% else %>
+        <%= link_to user_session_path, class: "text-gray-700 hover:text-gray-900" do %>
+          Login
+        <% end %>
+        <%= link_to new_user_registration_path, class: "text-gray-700 hover:text-gray-900" do %>
+          Signup
+        <% end %>
+      <% end %>
+    </div>
+    <div class="md:hidden flex items-center">
+      <button class="mobile-menu-button" data-action="click->mobile-menu#toggleMenu">
+        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
     </div>
   </div>
-
   <div class="mobile-menu hidden md:hidden" data-mobile-menu-target="menu">
-    <% if user_signed_in? %>
-      <%= link_to user_path(current_user) do %>
-        <span class="block py-2 px-4 text-sm hover:bg-gray-200">Profile</span>
+    <div class="px-4 pb-4 space-y-2">
+      <%= form_with url: dashboard_blog_posts_path, method: :get, local: true, class: "flex space-x-2" do |f| %>
+        <%= f.text_field :q, value: params[:q], placeholder: "Search", class: "flex-1 border rounded-l-full px-4 py-1" %>
+        <%= f.submit "Search", class: "px-4 py-1 bg-blue-500 text-white rounded-r-full" %>
       <% end %>
-      <%= link_to blog_posts_path do %>
-        <span class="block py-2 px-4 text-sm hover:bg-gray-200">My Blog<span>
+      <% if user_signed_in? %>
+        <%= link_to new_blog_post_path, class: "block py-2" do %>Upload<% end %>
+        <%= link_to user_path(current_user), class: "block py-2" do %>Profile<% end %>
+        <%= button_to destroy_user_session_path, method: :delete, class: "block py-2 text-left" do %>Log out<% end %>
+      <% else %>
+        <%= link_to user_session_path, class: "block py-2" do %>Login<% end %>
+        <%= link_to new_user_registration_path, class: "block py-2" do %>Signup<% end %>
       <% end %>
-      <%= button_to destroy_user_session_path, method: :delete do %>
-        <span class="block py-2 px-4 text-sm hover:bg-gray-200">Log out</span>
-      <% end %>
-    <% else %>
-      <%= link_to user_session_path do %>
-        <span class="block py-2 px-4 text-sm hover:bg-gray-200">Login</span>
-      <% end %>
-      <%= link_to new_user_registration_path do %>
-        <span class="block py-2 px-4 font-bold hover:bg-gray-200">Signup</span>
-      <% end %>
-    <% end %>
+    </div>
   </div>
 </nav>
