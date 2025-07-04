@@ -1,0 +1,42 @@
+<nav class="fixed bottom-0 left-0 right-0 bg-white border-t flex justify-around items-center h-16 md:top-0 md:left-0 md:bottom-0 md:w-56 md:flex-col md:space-y-6 md:border-r md:border-t-0 md:pt-20">
+  <%= link_to dashboard_blog_posts_path, class: "flex flex-col items-center text-gray-700 hover:text-gray-900" do %>
+    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M3 9.3L12 2l9 7.3V20a2 2 0 01-2 2h-6v-6h-2v6H5a2 2 0 01-2-2V9.3z" />
+    </svg>
+    <span class="text-xs md:text-sm">Home</span>
+  <% end %>
+
+  <% if user_signed_in? %>
+    <%= link_to new_blog_post_path, class: "flex flex-col items-center text-gray-700 hover:text-gray-900" do %>
+      <svg class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+        <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
+      </svg>
+      <span class="text-xs md:text-sm">Upload</span>
+    <% end %>
+    <%= link_to user_path(current_user), class: "flex flex-col items-center text-gray-700 hover:text-gray-900" do %>
+      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-3.33 0-10 1.67-10 5v3h20v-3c0-3.33-6.67-5-10-5z" />
+      </svg>
+      <span class="text-xs md:text-sm">Profile</span>
+    <% end %>
+    <%= button_to destroy_user_session_path, method: :delete, class: "flex flex-col items-center text-gray-700 hover:text-gray-900" do %>
+      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M15 12H9m6 0l-3-3m3 3l-3 3m-3-5v8a2 2 0 002 2h6a2 2 0 002-2v-8" />
+      </svg>
+      <span class="text-xs md:text-sm">Logout</span>
+    <% end %>
+  <% else %>
+    <%= link_to user_session_path, class: "flex flex-col items-center text-gray-700 hover:text-gray-900" do %>
+      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M10 12H3m7 0l-3-3m3 3l-3 3m5-5v8a2 2 0 002 2h6a2 2 0 002-2v-8" />
+      </svg>
+      <span class="text-xs md:text-sm">Login</span>
+    <% end %>
+    <%= link_to new_user_registration_path, class: "flex flex-col items-center text-gray-700 hover:text-gray-900" do %>
+      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M12 4v16m8-8H4" />
+      </svg>
+      <span class="text-xs md:text-sm">Signup</span>
+    <% end %>
+  <% end %>
+</nav>
