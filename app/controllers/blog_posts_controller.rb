@@ -5,11 +5,19 @@ class BlogPostsController < ApplicationController
 
   def dashboard
     @blog_posts = BlogPost.published
+    if params[:q].present?
+      query = "%#{params[:q]}%"
+      @blog_posts = @blog_posts.where("title ILIKE ?", query)
+    end
     @pagy, @blog_posts = pagy(@blog_posts)
   end
 
   def index
     @blog_posts = current_user.blog_posts
+    if params[:q].present?
+      query = "%#{params[:q]}%"
+      @blog_posts = @blog_posts.where("title ILIKE ?", query)
+    end
     @pagy, @blog_posts = pagy(@blog_posts)
   end
 

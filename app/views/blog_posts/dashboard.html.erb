@@ -1,5 +1,11 @@
 <div class="m-8">
-	<div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-5">
+  <div class="flex justify-end mb-4">
+    <%= form_with url: dashboard_blog_posts_path, method: :get, local: true, class: "flex space-x-2" do |f| %>
+      <%= f.text_field :q, value: params[:q], placeholder: "Search videos...", class: "border rounded p-2" %>
+      <%= f.submit "Search", class: "bg-blue-600 text-white rounded px-4" %>
+    <% end %>
+  </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-5">
                 <% @blog_posts.each do |blog| %>
                         <div>
                                 <div class="group aspect-h-7 aspect-w-10 block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100">
