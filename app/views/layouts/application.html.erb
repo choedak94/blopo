@@ -11,7 +11,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="flex flex-col min-h-screen">
+  <body class="flex flex-col min-h-screen md:pl-56 pb-16">
     <%= render "shared/nav_bar"%>
 
     <% if notice %>
@@ -24,7 +24,7 @@
         <%= alert %>
       </div>
     <% end %>
-    <main>
+    <main class="flex-1">
       <%= yield %>
     </main>
 
