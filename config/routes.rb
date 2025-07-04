@@ -6,7 +6,11 @@ Rails.application.routes.draw do
       get :dashboard
       get :index
     end
+    member do
+      post :like
+      post :dislike
+    end
   end
-  resources :comments, only: [:create]
+  resources :comments, only: [:create, :destroy]
   root "blog_posts#dashboard"
 end

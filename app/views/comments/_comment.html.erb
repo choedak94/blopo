@@ -6,6 +6,9 @@
     <div data-reply-form-target="form" class="hidden ml-4">
       <%= render 'comments/form', blog_post: comment.blog_post, parent: comment %>
     </div>
+    <% if current_user == comment.user || current_user == comment.blog_post.user %>
+      <%= button_to 'Delete', comment_path(comment), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'text-sm text-red-600 mt-1' %>
+    <% end %>
   <% end %>
   <div class="ml-4 space-y-4">
     <% comment.replies.each do |reply| %>

@@ -1,6 +1,6 @@
 class BlogPostsController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :edit, :update, :destroy]
-  before_action :load_blog_post, only: [:edit, :update, :show, :destroy]
+  before_action :authenticate_user!, only: [:index, :edit, :update, :destroy, :like, :dislike]
+  before_action :load_blog_post, only: [:edit, :update, :show, :destroy, :like, :dislike]
   before_action :authorize_user!, only: [:edit, :update, :destroy]
 
   def dashboard
@@ -44,6 +44,32 @@ class BlogPostsController < ApplicationController
   def destroy
     @blog_post.destroy
     redirect_to blog_posts_path, notice: "Blog post was successfully deleted."
+  end
+
+  def like
+    vote = @blog_post.votes.find_by(user: current_user)
+    if vote&.value == 1
+      vote.destroy
+    else
+      vote&.update(value: 1) || @blog_post.votes.create(user: current_user, value: 1)
+    end
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.replace(view_context.dom_id(@blog_post, :votes), partial: "blog_posts/vote_buttons", locals: { blog_post: @blog_post }) }
+      format.html { redirect_to @blog_post }
+    end
+  end
+
+  def dislike
+    vote = @blog_post.votes.find_by(user: current_user)
+    if vote&.value == -1
+      vote.destroy
+    else
+      vote&.update(value: -1) || @blog_post.votes.create(user: current_user, value: -1)
+    end
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.replace(view_context.dom_id(@blog_post, :votes), partial: "blog_posts/vote_buttons", locals: { blog_post: @blog_post }) }
+      format.html { redirect_to @blog_post }
+    end
   end
 
   private

@@ -25,6 +25,10 @@
     </div>
     <p class="text-sm text-gray-500">Author: <%= @blog_post.user.username %></p>
 
+    <%= turbo_frame_tag dom_id(@blog_post, :votes) do %>
+      <%= render 'blog_posts/vote_buttons', blog_post: @blog_post %>
+    <% end %>
+
     <% if user_signed_in? %>
       <div class="mt-6">
         <%= render 'comments/form', blog_post: @blog_post, parent: nil %>

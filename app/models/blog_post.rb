@@ -1,6 +1,7 @@
 class BlogPost < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
+  has_many :votes, dependent: :destroy
   has_one_attached :video
 
   validates :title, presence: true
@@ -18,7 +19,15 @@ class BlogPost < ApplicationRecord
 		published_at? && published_at <= Time.current
 	end
 
-	def schedule?
-		published_at? && published_at > Time.current
-	end
+  def schedule?
+    published_at? && published_at > Time.current
+  end
+
+  def likes_count
+    votes.where(value: 1).count
+  end
+
+  def dislikes_count
+    votes.where(value: -1).count
+  end
 end
