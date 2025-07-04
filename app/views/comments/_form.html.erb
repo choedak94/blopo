@@ -10,7 +10,7 @@
     <%= f.text_area :body, rows: 3, placeholder: 'Write your comment...', class: 'w-full border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 p-3' %>
   </div>
   <div class="flex space-x-2">
-    <%= f.submit 'Post Comment', class: 'bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-xl shadow transition duration-300' %>
+    <%= f.submit 'Post Comment', class: 'bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-xl shadow transition duration-300' %>
     <% if parent %>
       <button type="button" data-action="reply-form#toggle" class="bg-gray-200 px-4 py-2 rounded-xl">Cancel</button>
     <% end %>
