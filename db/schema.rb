@@ -88,9 +88,22 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_28_120513) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "blog_post_id", null: false
+    t.integer "value", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blog_post_id"], name: "index_votes_on_blog_post_id"
+    t.index ["user_id", "blog_post_id"], name: "index_votes_on_user_id_and_blog_post_id", unique: true
+    t.index ["user_id"], name: "index_votes_on_user_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "blog_posts", "users"
   add_foreign_key "comments", "blog_posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "votes", "users"
+  add_foreign_key "votes", "blog_posts"
 end

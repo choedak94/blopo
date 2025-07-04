@@ -1,0 +1,8 @@
+<div class="flex items-center space-x-4">
+  <%= button_to like_blog_post_path(blog_post), method: :post, form: { data: { turbo_stream: true } }, class: "text-blue-600" do %>
+    Like (<%= blog_post.likes_count %>)
+  <% end %>
+  <%= button_to dislike_blog_post_path(blog_post), method: :post, form: { data: { turbo_stream: true } }, class: "text-red-600" do %>
+    Dislike (<%= blog_post.dislikes_count %>)
+  <% end %>
+</div>
