@@ -12,8 +12,9 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="flex flex-col min-h-screen">
-    <%= render "shared/nav_bar"%>
+  <body class="min-h-screen flex">
+    <%= render "shared/nav_bar" %>
+    <div class="flex flex-col flex-1">
 
     <% if notice %>
       <div class="flex justify-between py-4 px-8 bg-[#98f5e1]  text-[#236c5b]">
@@ -29,6 +30,7 @@
       <%= yield %>
     </main>
 
-    <%= render "shared/footer"%>
+    <%= render "shared/footer" %>
+    </div>
   </body>
 </html>
