@@ -1,0 +1,65 @@
+zh:
+  nav:
+    search: "\u641C\u7D22"
+    profile: "\u4E2A\u4EBA\u8D44\u6599"
+    logout: "\u9000\u51FA\u767B\u5F55"
+    login: "\u767B\u5F55"
+    signup: "\u6CE8\u518C"
+    upload: "\u4E0A\u4F20"
+  posts:
+    upload_your_video: "\u4E0A\u4F20\u60A8\u7684\u89C6\u9891"
+    edit_video: "\u7F16\u8F91\u89C6\u9891"
+    title: "\u6807\u9898"
+    enter_title: "\u8F93\u5165\u89C6\u9891\u6807\u9898..."
+    description: "\u63CF\u8FF0"
+    enter_description: "\u8BF4\u660E\u7B80\u4ECB..."
+    choose_video: "\u9009\u62E9\u89C6\u9891"
+    publish_at: "\u53D1\u5E03\u65F6\u95F4"
+    upload_video: "\u4E0A\u4F20\u89C6\u9891"
+    update_video: "\u66F4\u65B0\u89C6\u9891"
+    new_blog: "\u65B0\u5E16\u5B50"
+    edit: "\u7F16\u8F91"
+    uploaded_at: "\u4E0A\u4F20\u4E8E"
+    author: "\u4F5C\u8005"
+    sign_in_prompt_html: "\u8BF7%{link}\u53D1\u8868\u8BC4\u8BBA\u3002"
+  comments:
+    add: "\u65B0\u589E\u8BC4\u8BBA"
+    placeholder: "\u8F93\u5165\u60A8\u7684\u8BC4\u8BBA..."
+    post: "\u53D1\u8868\u8BC4\u8BBA"
+    reply: "\u56DE\u590D"
+  language:
+    label: "\u8BED\u8A00"
+    english: "\u82F1\u8BED"
+    chinese: "\u4E2D\u6587"
+  common:
+    delete: "\u5220\u9664"
+    are_you_sure: "\u786E\u8BA4\u5220\u9664?"
+    cancel: "\u53D6\u6D88"
+    back: "\u8FD4\u56DE"
+  users:
+    edit_profile: "\u7F16\u8F91\u4E2A\u4EBA\u4FE1\u606F"
+    blog_posts: "\u535A\u6587"
+  devise:
+    sessions:
+      new:
+        login: "\u767B\u5F55"
+        forgot: "\u5FD8\u8BB0\u5BC6\u7801?"
+        not_a_member: "\u8FD8\u6CA1\u6709\u8D26\u53F7?"
+        signup: "\u6CE8\u518C"
+    registrations:
+      new:
+        signup: "\u6CE8\u518C"
+        have_account: "\u5DF2\u7ECF\u6709\u8D26\u53F7?"
+        login: "\u767B\u5F55"
+      edit:
+        title: "\u7F16\u8F91%{model}"
+        update: "\u66F4\u65B0"
+        cancel: "\u5220\u9664\u6211\u7684\u8D26\u53F7"
+    passwords:
+      forgot: "\u5FD8\u8BB0\u5BC6\u7801?"
+    confirmations:
+      missing: "\u672A\u6536\u5230\u786E\u8BA4\u90AE\u4EF6?"
+    unlocks:
+      missing: "\u672A\u6536\u5230\u89E3\u9501\u90AE\u4EF6?"
+    omniauth:
+      sign_in_with: "\u4F7F\u7528%{provider}\u767B\u5F55"

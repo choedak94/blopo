@@ -2,12 +2,12 @@
   <p class="font-semibold text-gray-800"><%= comment.user.username %></p>
   <p class="text-gray-600"><%= simple_format(comment.body) %></p>
   <% if user_signed_in? %>
-    <button data-action="reply-form#toggle" class="text-sm text-blue-600 mt-1">Reply</button>
+    <button data-action="reply-form#toggle" class="text-sm text-blue-600 mt-1"><%= t('comments.reply') %></button>
     <div data-reply-form-target="form" class="hidden ml-4">
       <%= render 'comments/form', blog_post: comment.blog_post, parent: comment %>
     </div>
     <% if current_user == comment.user || current_user == comment.blog_post.user %>
-      <%= button_to 'Delete', comment_path(comment), method: :delete, form: { data: { turbo_confirm: 'Are you sure?' } }, class: 'text-sm text-red-600 mt-1' %>
+      <%= button_to t('common.delete'), comment_path(comment), method: :delete, form: { data: { turbo_confirm: t('common.are_you_sure') } }, class: 'text-sm text-red-600 mt-1' %>
     <% end %>
   <% end %>
   <div class="ml-4 space-y-4">

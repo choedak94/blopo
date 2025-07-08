@@ -29,3 +29,67 @@
 
 en:
   hello: "Hello world"
+  nav:
+    search: "Search"
+    profile: "Profile"
+    logout: "Log out"
+    login: "Login"
+    signup: "Signup"
+    upload: "Upload"
+  posts:
+    upload_your_video: "Upload Your Video"
+    edit_video: "Edit Video"
+    title: "Title"
+    enter_title: "Enter video title..."
+    description: "Description"
+    enter_description: "Write a brief description..."
+    choose_video: "Choose Video"
+    publish_at: "Publish At"
+    upload_video: "Upload Video"
+    update_video: "Update Video"
+    new_blog: "New Blog"
+    edit: "Edit"
+    uploaded_at: "Uploaded at"
+    author: "Author"
+    sign_in_prompt_html: "Please %{link} to add a comment."
+  comments:
+    add: "Add a comment"
+    placeholder: "Write your comment..."
+    post: "Post Comment"
+    reply: "Reply"
+  language:
+    label: "Language"
+    english: "English"
+    chinese: "Chinese"
+  common:
+    delete: "Delete"
+    are_you_sure: "Are you sure?"
+    cancel: "Cancel"
+    back: "Back"
+  users:
+    edit_profile: "Edit profile"
+    blog_posts: "Blog Posts"
+  devise:
+    sessions:
+      new:
+        login: "Log in"
+        forgot: "Forgot password?"
+        not_a_member: "Not a member?"
+        signup: "Sign up"
+    registrations:
+      new:
+        signup: "Sign up"
+        have_account: "Already have an account?"
+        login: "Login"
+      edit:
+        title: "Edit %{model}"
+        update: "Update"
+        cancel: "Cancel my account"
+    passwords:
+      forgot: "Forgot your password?"
+    confirmations:
+      missing: "Didn't receive confirmation instructions?"
+    unlocks:
+      missing: "Didn't receive unlock instructions?"
+    omniauth:
+      sign_in_with: "Sign in with %{provider}"
