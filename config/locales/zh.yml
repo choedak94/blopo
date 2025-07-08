@@ -61,5 +61,9 @@ zh:
       missing: "\u672A\u6536\u5230\u786E\u8BA4\u90AE\u4EF6?"
     unlocks:
       missing: "\u672A\u6536\u5230\u89E3\u9501\u90AE\u4EF6?"
-    omniauth:
+  omniauth:
       sign_in_with: "\u4F7F\u7528%{provider}\u767B\u5F55"
+
+  time:
+    formats:
+      short: "%Y\u5E74%m\u6708%d\u65E5 %H:%M"

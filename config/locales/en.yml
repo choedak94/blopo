@@ -93,3 +93,7 @@ en:
       missing: "Didn't receive unlock instructions?"
     omniauth:
       sign_in_with: "Sign in with %{provider}"
+
+  time:
+    formats:
+      short: "%b %d, %Y %H:%M"
