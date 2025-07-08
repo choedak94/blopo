@@ -36,6 +36,7 @@ en:
     login: "Login"
     signup: "Signup"
     upload: "Upload"
+    dark_mode: "Toggle Dark Mode"
   posts:
     upload_your_video: "Upload Your Video"
     edit_video: "Edit Video"

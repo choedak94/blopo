@@ -6,6 +6,7 @@ zh:
     login: "\u767B\u5F55"
     signup: "\u6CE8\u518C"
     upload: "\u4E0A\u4F20"
+    dark_mode: "\u5207\u6362\u6697\u9ED1\u6A21\u5F0F"
   posts:
     upload_your_video: "\u4E0A\u4F20\u60A8\u7684\u89C6\u9891"
     edit_video: "\u7F16\u8F91\u89C6\u9891"
