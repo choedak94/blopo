@@ -45,7 +45,7 @@ gem "bootsnap", require: false
 gem "image_processing", "~> 1.2"
 
 gem 'simple_form'
-gem "tailwindcss-rails", "~> 2.4"
+gem "tailwindcss-rails", "~> 2.6"
 gem "devise", "~> 4.9"
 gem  "aws-sdk-s3", require: false
 

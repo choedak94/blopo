@@ -1,4 +1,4 @@
-<nav class="bg-white border-b shadow-sm" data-controller="mobile-menu">
+<nav class="bg-white dark:bg-gray-800 dark:text-gray-100 border-b shadow-sm" data-controller="mobile-menu">
   <div class="mx-auto max-w-7xl px-4 py-2 flex items-center justify-between">
     <div class="flex items-center space-x-2">
       <%= link_to dashboard_blog_posts_path, class: "flex items-center" do %>
@@ -41,6 +41,15 @@
                         onchange: 'this.form.submit();',
                         class: 'border rounded px-1 py-0.5 text-sm' %>
       <% end %>
+      <button data-action="theme#toggle" class="p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700">
+        <svg data-theme-target="sun" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5" />
+          <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+        </svg>
+        <svg data-theme-target="moon" class="h-6 w-6 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+        </svg>
+      </button>
     </div>
     <div class="md:hidden flex items-center">
       <button class="mobile-menu-button" data-action="click->mobile-menu#toggleMenu">
@@ -70,6 +79,18 @@
                         onchange: 'this.form.submit();',
                         class: 'border rounded px-1 py-0.5 text-sm w-full' %>
       <% end %>
+      <button data-action="theme#toggle" class="p-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 w-full text-left">
+        <span class="inline-flex items-center">
+          <svg data-theme-target="sun" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5" />
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" />
+          </svg>
+          <svg data-theme-target="moon" class="h-6 w-6 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+          </svg>
+          <span class="ml-2"><%= t('nav.toggle_theme', default: 'Toggle Theme') %></span>
+        </span>
+      </button>
     </div>
   </div>
 </nav>
