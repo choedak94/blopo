@@ -1,4 +1,4 @@
-<nav class="bg-white border-b shadow-sm" data-controller="mobile-menu">
+<nav class="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm" data-controller="mobile-menu">
   <div class="mx-auto max-w-7xl px-4 py-2 flex items-center justify-between">
     <div class="flex items-center space-x-2">
       <%= link_to dashboard_blog_posts_path, class: "flex items-center" do %>
@@ -10,28 +10,28 @@
     </div>
     <div class="hidden md:flex flex-1 mx-8">
       <%= form_with url: dashboard_blog_posts_path, method: :get, local: true, class: "flex w-full" do |f| %>
-        <%= f.text_field :q, value: params[:q], placeholder: t('nav.search'), class: "flex-1 border rounded-l-full px-4 py-1" %>
+        <%= f.text_field :q, value: params[:q], placeholder: t('nav.search'), class: "flex-1 border rounded-l-full px-4 py-1 dark:bg-gray-700 dark:text-white" %>
         <%= f.submit t('nav.search'), class: "px-4 py-1 bg-blue-500 text-white rounded-r-full" %>
       <% end %>
     </div>
     <div class="hidden md:flex items-center space-x-4">
       <% if user_signed_in? %>
-        <%= link_to new_blog_post_path, class: "text-gray-700 hover:text-gray-900" do %>
+        <%= link_to new_blog_post_path, class: "text-gray-700 hover:text-gray-900 dark:text-gray-300" do %>
           <svg class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
           </svg>
         <% end %>
-        <%= link_to user_path(current_user), class: "text-gray-700 hover:text-gray-900" do %>
+        <%= link_to user_path(current_user), class: "text-gray-700 hover:text-gray-900 dark:text-gray-300" do %>
           <%= t('nav.profile') %>
         <% end %>
-        <%= button_to destroy_user_session_path, method: :delete, class: "text-gray-700 hover:text-gray-900" do %>
+        <%= button_to destroy_user_session_path, method: :delete, class: "text-gray-700 hover:text-gray-900 dark:text-gray-300" do %>
           <%= t('nav.logout') %>
         <% end %>
       <% else %>
-        <%= link_to user_session_path, class: "text-gray-700 hover:text-gray-900" do %>
+        <%= link_to user_session_path, class: "text-gray-700 hover:text-gray-900 dark:text-gray-300" do %>
           <%= t('nav.login') %>
         <% end %>
-        <%= link_to new_user_registration_path, class: "text-gray-700 hover:text-gray-900" do %>
+        <%= link_to new_user_registration_path, class: "text-gray-700 hover:text-gray-900 dark:text-gray-300" do %>
           <%= t('nav.signup') %>
         <% end %>
       <% end %>
@@ -39,8 +39,9 @@
         <%= select_tag :locale,
                         options_for_select([[t('language.english'), 'en'], [t('language.chinese'), 'zh']], I18n.locale),
                         onchange: 'this.form.submit();',
-                        class: 'border rounded px-1 py-0.5 text-sm' %>
+                        class: 'border rounded px-1 py-0.5 text-sm dark:bg-gray-700 dark:text-white' %>
       <% end %>
+      <button data-action="theme#toggle" class="px-2 py-1 text-gray-700 hover:text-gray-900 dark:text-gray-300">🌓</button>
     </div>
     <div class="md:hidden flex items-center">
       <button class="mobile-menu-button" data-action="click->mobile-menu#toggleMenu">
@@ -53,7 +54,7 @@
   <div class="mobile-menu hidden md:hidden" data-mobile-menu-target="menu">
     <div class="px-4 pb-4 space-y-2">
       <%= form_with url: dashboard_blog_posts_path, method: :get, local: true, class: "flex space-x-2" do |f| %>
-        <%= f.text_field :q, value: params[:q], placeholder: t('nav.search'), class: "flex-1 border rounded-l-full px-4 py-1" %>
+        <%= f.text_field :q, value: params[:q], placeholder: t('nav.search'), class: "flex-1 border rounded-l-full px-4 py-1 dark:bg-gray-700 dark:text-white" %>
         <%= f.submit t('nav.search'), class: "px-4 py-1 bg-blue-500 text-white rounded-r-full" %>
       <% end %>
       <% if user_signed_in? %>
@@ -68,8 +69,9 @@
         <%= select_tag :locale,
                         options_for_select([[t('language.english'), 'en'], [t('language.chinese'), 'zh']], I18n.locale),
                         onchange: 'this.form.submit();',
-                        class: 'border rounded px-1 py-0.5 text-sm w-full' %>
+                        class: 'border rounded px-1 py-0.5 text-sm w-full dark:bg-gray-700 dark:text-white' %>
       <% end %>
+      <button data-action="theme#toggle" class="px-2 py-1 text-gray-700 hover:text-gray-900 dark:text-gray-300">🌓</button>
     </div>
   </div>
 </nav>
