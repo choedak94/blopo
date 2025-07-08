@@ -16,12 +16,14 @@ export default class extends Controller {
   applyTheme(theme) {
     if (theme === "dark") {
       document.documentElement.classList.add("dark")
+      document.body.classList.add("dark")
       localStorage.setItem("theme", "dark")
-      if (this.hasIconTarget) this.iconTarget.textContent = "☀"
+      this.iconTargets.forEach(el => el.textContent = "☀")
     } else {
       document.documentElement.classList.remove("dark")
+      document.body.classList.remove("dark")
       localStorage.setItem("theme", "light")
-      if (this.hasIconTarget) this.iconTarget.textContent = "🌙"
+      this.iconTargets.forEach(el => el.textContent = "🌙")
     }
   }
 }
