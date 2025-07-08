@@ -11,6 +11,9 @@ class ApplicationController < ActionController::Base
         end
 
         def set_locale
-                I18n.locale = current_user&.language || I18n.default_locale
+                locale = session[:locale] || current_user&.language || I18n.default_locale
+                locale = I18n.default_locale unless I18n.available_locales.map(&:to_s).include?(locale.to_s)
+                I18n.locale = locale
+                session[:locale] = locale
         end
 end

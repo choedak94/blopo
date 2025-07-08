@@ -35,6 +35,12 @@
           <%= t('nav.signup') %>
         <% end %>
       <% end %>
+      <%= form_with url: language_path, method: :patch, local: true do %>
+        <%= select_tag :locale,
+                        options_for_select([[t('language.english'), 'en'], [t('language.chinese'), 'zh']], I18n.locale),
+                        onchange: 'this.form.submit();',
+                        class: 'border rounded px-1 py-0.5 text-sm' %>
+      <% end %>
     </div>
     <div class="md:hidden flex items-center">
       <button class="mobile-menu-button" data-action="click->mobile-menu#toggleMenu">
@@ -57,6 +63,12 @@
       <% else %>
         <%= link_to user_session_path, class: "block py-2" do %><%= t('nav.login') %><% end %>
         <%= link_to new_user_registration_path, class: "block py-2" do %><%= t('nav.signup') %><% end %>
+      <% end %>
+      <%= form_with url: language_path, method: :patch, local: true do %>
+        <%= select_tag :locale,
+                        options_for_select([[t('language.english'), 'en'], [t('language.chinese'), 'zh']], I18n.locale),
+                        onchange: 'this.form.submit();',
+                        class: 'border rounded px-1 py-0.5 text-sm w-full' %>
       <% end %>
     </div>
   </div>

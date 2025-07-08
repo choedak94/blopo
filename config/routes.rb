@@ -12,5 +12,6 @@ Rails.application.routes.draw do
     end
   end
   resources :comments, only: [:create, :destroy]
+  resource :language, only: [:update]
   root "blog_posts#dashboard"
 end
