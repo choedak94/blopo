@@ -10,8 +10,8 @@
     </div>
     <div class="hidden md:flex flex-1 mx-8">
       <%= form_with url: dashboard_blog_posts_path, method: :get, local: true, class: "flex w-full" do |f| %>
-        <%= f.text_field :q, value: params[:q], placeholder: "Search", class: "flex-1 border rounded-l-full px-4 py-1" %>
-        <%= f.submit "Search", class: "px-4 py-1 bg-blue-500 text-white rounded-r-full" %>
+        <%= f.text_field :q, value: params[:q], placeholder: t('nav.search'), class: "flex-1 border rounded-l-full px-4 py-1" %>
+        <%= f.submit t('nav.search'), class: "px-4 py-1 bg-blue-500 text-white rounded-r-full" %>
       <% end %>
     </div>
     <div class="hidden md:flex items-center space-x-4">
@@ -22,18 +22,24 @@
           </svg>
         <% end %>
         <%= link_to user_path(current_user), class: "text-gray-700 hover:text-gray-900" do %>
-          Profile
+          <%= t('nav.profile') %>
         <% end %>
         <%= button_to destroy_user_session_path, method: :delete, class: "text-gray-700 hover:text-gray-900" do %>
-          Log out
+          <%= t('nav.logout') %>
         <% end %>
       <% else %>
         <%= link_to user_session_path, class: "text-gray-700 hover:text-gray-900" do %>
-          Login
+          <%= t('nav.login') %>
         <% end %>
         <%= link_to new_user_registration_path, class: "text-gray-700 hover:text-gray-900" do %>
-          Signup
+          <%= t('nav.signup') %>
         <% end %>
+      <% end %>
+      <%= form_with url: language_path, method: :patch, local: true do %>
+        <%= select_tag :locale,
+                        options_for_select([[t('language.english'), 'en'], [t('language.chinese'), 'zh']], I18n.locale),
+                        onchange: 'this.form.submit();',
+                        class: 'border rounded px-1 py-0.5 text-sm' %>
       <% end %>
     </div>
     <div class="md:hidden flex items-center">
@@ -47,16 +53,22 @@
   <div class="mobile-menu hidden md:hidden" data-mobile-menu-target="menu">
     <div class="px-4 pb-4 space-y-2">
       <%= form_with url: dashboard_blog_posts_path, method: :get, local: true, class: "flex space-x-2" do |f| %>
-        <%= f.text_field :q, value: params[:q], placeholder: "Search", class: "flex-1 border rounded-l-full px-4 py-1" %>
-        <%= f.submit "Search", class: "px-4 py-1 bg-blue-500 text-white rounded-r-full" %>
+        <%= f.text_field :q, value: params[:q], placeholder: t('nav.search'), class: "flex-1 border rounded-l-full px-4 py-1" %>
+        <%= f.submit t('nav.search'), class: "px-4 py-1 bg-blue-500 text-white rounded-r-full" %>
       <% end %>
       <% if user_signed_in? %>
-        <%= link_to new_blog_post_path, class: "block py-2" do %>Upload<% end %>
-        <%= link_to user_path(current_user), class: "block py-2" do %>Profile<% end %>
-        <%= button_to destroy_user_session_path, method: :delete, class: "block py-2 text-left" do %>Log out<% end %>
+        <%= link_to new_blog_post_path, class: "block py-2" do %><%= t('nav.upload') %><% end %>
+        <%= link_to user_path(current_user), class: "block py-2" do %><%= t('nav.profile') %><% end %>
+        <%= button_to destroy_user_session_path, method: :delete, class: "block py-2 text-left" do %><%= t('nav.logout') %><% end %>
       <% else %>
-        <%= link_to user_session_path, class: "block py-2" do %>Login<% end %>
-        <%= link_to new_user_registration_path, class: "block py-2" do %>Signup<% end %>
+        <%= link_to user_session_path, class: "block py-2" do %><%= t('nav.login') %><% end %>
+        <%= link_to new_user_registration_path, class: "block py-2" do %><%= t('nav.signup') %><% end %>
+      <% end %>
+      <%= form_with url: language_path, method: :patch, local: true do %>
+        <%= select_tag :locale,
+                        options_for_select([[t('language.english'), 'en'], [t('language.chinese'), 'zh']], I18n.locale),
+                        onchange: 'this.form.submit();',
+                        class: 'border rounded px-1 py-0.5 text-sm w-full' %>
       <% end %>
     </div>
   </div>

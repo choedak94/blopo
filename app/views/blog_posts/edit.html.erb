@@ -1,9 +1,9 @@
 <div class="py-5">
-  <h3 class="text-base font-semibold leading-6 text-gray-900">Edit</h3>
+  <h3 class="text-base font-semibold leading-6 text-gray-900"><%= t('posts.edit') %></h3>
 </div>
 
 <%= render 'form', blog_post: @blog_post %>
 
 <div class="flex justify-end m-3">
-  <%= button_to "Delete", @blog_post, method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "inline-flex items-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600", remote: true %>
+  <%= button_to t('common.delete'), @blog_post, method: :delete, data: { turbo_confirm: t('common.are_you_sure') }, class: "inline-flex items-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600", remote: true %>
 </div>

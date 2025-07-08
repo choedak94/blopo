@@ -19,11 +19,11 @@
 
   <div class="p-6 space-y-4">
     <h1 class="text-2xl font-bold text-gray-800"><%= @blog_post.title %></h1>
-    <p class="text-sm text-gray-500">Uploaded at <%= l(@blog_post.created_at, format: :short) %></p>
+    <p class="text-sm text-gray-500"><%= t('posts.uploaded_at') %> <%= l(@blog_post.created_at, format: :short) %></p>
     <div class="text-gray-700 prose">
       <%= simple_format(@blog_post.description) %>
     </div>
-    <p class="text-sm text-gray-500">Author: <%= @blog_post.user.username %></p>
+    <p class="text-sm text-gray-500"><%= t('posts.author') %>: <%= @blog_post.user.username %></p>
 
     <%= turbo_frame_tag dom_id(@blog_post, :votes) do %>
       <%= render 'blog_posts/vote_buttons', blog_post: @blog_post %>
@@ -34,7 +34,7 @@
         <%= render 'comments/form', blog_post: @blog_post, parent: nil %>
       </div>
     <% else %>
-      <p class="text-sm text-gray-500 mt-6">Please <%= link_to 'sign in', new_user_session_path, class: 'text-blue-600' %> to add a comment.</p>
+      <p class="text-sm text-gray-500 mt-6"><%= t('posts.sign_in_prompt_html', link: link_to(t('nav.login'), new_user_session_path, class: 'text-blue-600')) %></p>
     <% end %>
 
     <div class="mt-8 space-y-4">

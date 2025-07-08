@@ -25,5 +25,7 @@ module TibMarketplace
     # config.eager_load_paths << Rails.root.join("extras")
     config.assets.enabled = true
 
+    config.i18n.available_locales = %i[en zh]
+    config.i18n.default_locale = :en
   end
 end
