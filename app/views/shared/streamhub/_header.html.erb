@@ -1,0 +1,23 @@
+<header class="fixed top-0 left-0 right-0 h-16 bg-gradient-to-r from-purple-600 to-pink-500 text-white flex items-center px-4 z-50">
+  <div class="flex items-center space-x-3">
+    <button data-action="streamhub#toggleSidebar" class="p-2 rounded-lg bg-white/20 hover:bg-white/30">
+      <!-- menu icon -->
+      <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <div class="font-bold text-xl">StreamHub</div>
+  </div>
+  <div class="flex-1 mx-4 hidden md:block">
+    <div class="flex bg-white/20 rounded-full overflow-hidden">
+      <input type="text" placeholder="Search..." class="flex-1 bg-transparent px-4 py-2 placeholder-white text-white focus:outline-none"/>
+      <button class="px-4" >
+        <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="flex items-center space-x-3">
+    <button data-action="streamhub#toggleTheme" class="p-2 rounded-lg bg-white/20 hover:bg-white/30">
+      <!-- moon icon -->
+      <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 20 20"><path d="M10 2a8 8 0 106.32 12.906A9 9 0 0110 2z"/></svg>
+    </button>
+  </div>
+</header>
