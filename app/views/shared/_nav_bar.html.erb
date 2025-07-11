@@ -1,4 +1,4 @@
-<nav class="bg-white border-b shadow-sm" data-controller="mobile-menu">
+<nav class="border-b shadow-sm text-white" data-controller="mobile-menu theme">
   <div class="mx-auto max-w-7xl px-4 py-2 flex items-center justify-between">
     <div class="flex items-center space-x-2">
       <%= link_to dashboard_blog_posts_path, class: "flex items-center" do %>
@@ -15,6 +15,7 @@
       <% end %>
     </div>
     <div class="hidden md:flex items-center space-x-4">
+      <button class="p-2 rounded-full hover:bg-white/20" data-action="theme#toggle" data-theme-target="icon"></button>
       <% if user_signed_in? %>
         <%= link_to new_blog_post_path, class: "text-gray-700 hover:text-gray-900" do %>
           <svg class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -52,6 +53,7 @@
   </div>
   <div class="mobile-menu hidden md:hidden" data-mobile-menu-target="menu">
     <div class="px-4 pb-4 space-y-2">
+      <button class="p-2 rounded-full hover:bg-white/20" data-action="theme#toggle" data-theme-target="icon"></button>
       <%= form_with url: dashboard_blog_posts_path, method: :get, local: true, class: "flex space-x-2" do |f| %>
         <%= f.text_field :q, value: params[:q], placeholder: t('nav.search'), class: "flex-1 border rounded-l-full px-4 py-1" %>
         <%= f.submit t('nav.search'), class: "px-4 py-1 bg-blue-500 text-white rounded-r-full" %>
