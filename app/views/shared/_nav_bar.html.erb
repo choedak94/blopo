@@ -1,4 +1,4 @@
-<nav class="bg-white border-b shadow-sm" data-controller="mobile-menu">
+<nav class="bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow" data-controller="mobile-menu">
   <div class="mx-auto max-w-7xl px-4 py-2 flex items-center justify-between">
     <div class="flex items-center space-x-2">
       <%= link_to dashboard_blog_posts_path, class: "flex items-center" do %>
@@ -10,28 +10,33 @@
     </div>
     <div class="hidden md:flex flex-1 mx-8">
       <%= form_with url: dashboard_blog_posts_path, method: :get, local: true, class: "flex w-full" do |f| %>
-        <%= f.text_field :q, value: params[:q], placeholder: t('nav.search'), class: "flex-1 border rounded-l-full px-4 py-1" %>
-        <%= f.submit t('nav.search'), class: "px-4 py-1 bg-blue-500 text-white rounded-r-full" %>
+        <%= f.text_field :q, value: params[:q], placeholder: t('nav.search'), class: "flex-1 rounded-l-full px-4 py-2 text-gray-800" %>
+        <%= f.submit t('nav.search'), class: "px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-r-full" %>
       <% end %>
     </div>
     <div class="hidden md:flex items-center space-x-4">
+      <button class="p-2 rounded-full bg-white/20 hover:bg-white/30" data-action="theme#toggle">
+        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+          <path d="M10 2a.75.75 0 01.75.75V4a.75.75 0 01-1.5 0V2.75A.75.75 0 0110 2zM10 16a.75.75 0 01.75.75V18a.75.75 0 01-1.5 0v-1.25A.75.75 0 0110 16zM4 9.25a.75.75 0 000 1.5H2.75a.75.75 0 010-1.5H4zM17.25 9.25a.75.75 0 000 1.5H18a.75.75 0 000-1.5h-.75zM5.47 5.47a.75.75 0 011.06 0l.53.53a.75.75 0 11-1.06 1.06l-.53-.53a.75.75 0 010-1.06zM12.94 12.94a.75.75 0 011.06 0l.53.53a.75.75 0 11-1.06 1.06l-.53-.53a.75.75 0 010-1.06zM5.47 14.53a.75.75 0 010-1.06l.53-.53a.75.75 0 111.06 1.06l-.53.53a.75.75 0 01-1.06 0zM12.94 7.06a.75.75 0 010-1.06l.53-.53a.75.75 0 111.06 1.06l-.53.53a.75.75 0 01-1.06 0zM10 6.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7z" />
+        </svg>
+      </button>
       <% if user_signed_in? %>
-        <%= link_to new_blog_post_path, class: "text-gray-700 hover:text-gray-900" do %>
+        <%= link_to new_blog_post_path, class: "text-white hover:text-gray-200" do %>
           <svg class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
             <path d="M10.75 4.75a.75.75 0 00-1.5 0v4.5h-4.5a.75.75 0 000 1.5h4.5v4.5a.75.75 0 001.5 0v-4.5h4.5a.75.75 0 000-1.5h-4.5v-4.5z" />
           </svg>
         <% end %>
-        <%= link_to user_path(current_user), class: "text-gray-700 hover:text-gray-900" do %>
+        <%= link_to user_path(current_user), class: "text-white hover:text-gray-200" do %>
           <%= t('nav.profile') %>
         <% end %>
-        <%= button_to destroy_user_session_path, method: :delete, class: "text-gray-700 hover:text-gray-900" do %>
+        <%= button_to destroy_user_session_path, method: :delete, class: "text-white hover:text-gray-200" do %>
           <%= t('nav.logout') %>
         <% end %>
       <% else %>
-        <%= link_to user_session_path, class: "text-gray-700 hover:text-gray-900" do %>
+        <%= link_to user_session_path, class: "text-white hover:text-gray-200" do %>
           <%= t('nav.login') %>
         <% end %>
-        <%= link_to new_user_registration_path, class: "text-gray-700 hover:text-gray-900" do %>
+        <%= link_to new_user_registration_path, class: "text-white hover:text-gray-200" do %>
           <%= t('nav.signup') %>
         <% end %>
       <% end %>
@@ -39,7 +44,7 @@
         <%= select_tag :locale,
                         options_for_select([[t('language.english'), 'en'], [t('language.chinese'), 'zh']], I18n.locale),
                         onchange: 'this.form.submit();',
-                        class: 'border rounded px-1 py-0.5 text-sm' %>
+                        class: 'border bg-white/20 rounded px-1 py-0.5 text-sm text-white' %>
       <% end %>
     </div>
     <div class="md:hidden flex items-center">
@@ -53,22 +58,22 @@
   <div class="mobile-menu hidden md:hidden" data-mobile-menu-target="menu">
     <div class="px-4 pb-4 space-y-2">
       <%= form_with url: dashboard_blog_posts_path, method: :get, local: true, class: "flex space-x-2" do |f| %>
-        <%= f.text_field :q, value: params[:q], placeholder: t('nav.search'), class: "flex-1 border rounded-l-full px-4 py-1" %>
-        <%= f.submit t('nav.search'), class: "px-4 py-1 bg-blue-500 text-white rounded-r-full" %>
+        <%= f.text_field :q, value: params[:q], placeholder: t('nav.search'), class: "flex-1 rounded-l-full px-4 py-2" %>
+        <%= f.submit t('nav.search'), class: "px-4 py-2 bg-white/20 hover:bg-white/30 text-white rounded-r-full" %>
       <% end %>
       <% if user_signed_in? %>
         <%= link_to new_blog_post_path, class: "block py-2" do %><%= t('nav.upload') %><% end %>
         <%= link_to user_path(current_user), class: "block py-2" do %><%= t('nav.profile') %><% end %>
         <%= button_to destroy_user_session_path, method: :delete, class: "block py-2 text-left" do %><%= t('nav.logout') %><% end %>
       <% else %>
-        <%= link_to user_session_path, class: "block py-2" do %><%= t('nav.login') %><% end %>
-        <%= link_to new_user_registration_path, class: "block py-2" do %><%= t('nav.signup') %><% end %>
+        <%= link_to user_session_path, class: "block py-2 text-white" do %><%= t('nav.login') %><% end %>
+        <%= link_to new_user_registration_path, class: "block py-2 text-white" do %><%= t('nav.signup') %><% end %>
       <% end %>
       <%= form_with url: language_path, method: :patch, local: true do %>
         <%= select_tag :locale,
                         options_for_select([[t('language.english'), 'en'], [t('language.chinese'), 'zh']], I18n.locale),
                         onchange: 'this.form.submit();',
-                        class: 'border rounded px-1 py-0.5 text-sm w-full' %>
+                        class: 'border bg-white/20 text-white rounded px-1 py-0.5 text-sm w-full' %>
       <% end %>
     </div>
   </div>
