@@ -1,7 +1,7 @@
-<div class="mx-auto max-w-7xl px-4 py-6">
+<div class="pt-20 pl-0 md:pl-60 px-4">
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
     <% @blog_posts.each do |blog| %>
-      <div class="bg-white rounded-lg shadow overflow-hidden">
+      <div class="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden cursor-pointer" data-action="click->streamhub#openModal" data-video="<div class='space-y-4'><h2 class='text-xl font-bold'>#{blog.title}</h2><p class='text-sm text-gray-500'>#{blog.user.username}</p><div>#{j(blog.content.body.to_truncated_plain_text.tr('\n',' '))}</div></div>">
         <div class="aspect-video bg-black">
           <% if blog.video.attached? %>
             <%= video_tag blog.video, controls: false, preload: :metadata, class: "w-full h-full object-cover" %>
